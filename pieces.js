@@ -53,8 +53,20 @@ pieceElement.appendChild(stockElement);
 
 const boutonTrier = document.querySelector(".btn-trier"); 
 boutonTrier.addEventListener("click", function () {
-    pieces.sort(function(a,b){
+    const piecesOrdonnees = Array.from(pieces);
+    piecesOrdonnees.sort(function(a,b){
         return a.prix - b.prix;
     });
-    console.log(pieces);
+    console.log(piecesOrdonnees);
+});
+
+//Pour le moment, les fiches produit restent dans le même ordre, c'est normal.
+//Nous verront comment mettre à jour l'écran à la suite de ces évènements.
+//On constate en ouvrant la console, que la liste est bien réordonée.
+
+const boutonFiltrer = document.querySelector(".btn-filtrer");
+boutonFiltrer.addEventListener("click", function () {
+    const piecesFiltrees = pieces.filter(function (piece) {
+        return piece.prix <= 35;
+    });
 });
