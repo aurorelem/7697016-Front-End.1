@@ -28,7 +28,7 @@ const descriptionElement = document.createElement("p");
 descriptionElement.innerText = article.description ?? "Pas de description pour le moment.";
 
 const stockElement = document.createElement("p");
-stockElement.innerText = article.disponibilité ? "En stock" : "Rupture de stock"; //Opérateur ternaire s'utilise lorsqu'on doit choisir entre deux possiblilités. La syntaxe géné est formulée ainsi: expression à tester ? valeur si vraie : valeur si faux.
+stockElement.innerText = article.disponibilite ? "En stock" : "Rupture de stock"; //Opérateur ternaire s'utilise lorsqu'on doit choisir entre deux possiblilités. La syntaxe géné est formulée ainsi: expression à tester ? valeur si vraie : valeur si faux.
 
 //Les quatre éléments ont été créés mais ils ne s’affichent pas encore à l’écran. 
 //C’est normal car dans le navigateur, on distingue deux opérations : la création d’un élément, et son ajout réel à la page web. 
@@ -50,3 +50,11 @@ pieceElement.appendChild(descriptionElement);
 pieceElement.appendChild(stockElement);
 
 }
+
+const boutonTrier = document.querySelector(".btn-trier"); 
+boutonTrier.addEventListener("click", function () {
+    pieces.sort(function(a,b){
+        return a.prix - b.prix;
+    });
+    console.log(pieces);
+});
