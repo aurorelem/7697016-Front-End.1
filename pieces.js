@@ -52,6 +52,7 @@ for (let i = 0; i < pieces.length; i++) {
 
 //Gestion des boutons
 const boutonTrier = document.querySelector(".btn-trier"); 
+
 boutonTrier.addEventListener("click", function () {
     const piecesOrdonnees = Array.from(pieces);
     piecesOrdonnees.sort(function(a,b) {
@@ -88,9 +89,9 @@ const boutonNoDescription = document.querySelector(".btn-nodesc");
 
 boutonNoDescription.addEventListener("click", function () {
     const piecesFiltrees = pieces.filter(function (piece) {
-        return piece.description
+        return piece.description;
     });
-   console.log(piecesFiltrees)
+   console.log(piecesFiltrees);
 });
 
 const noms = pieces.map(piece => piece.nom);
@@ -98,8 +99,8 @@ for(let i = pieces.length -1; i >= 0; i--) {
     if(pieces[i].prix > 35) {
         noms.splice(i,1);
     };
-};
 console.log(noms);
+};
 
 //Création de la liste
 const abordablesElements = document.createElement('ul');
@@ -107,19 +108,28 @@ const abordablesElements = document.createElement('ul');
 for(let i = 0; i < noms.length; i++){
     const nomElement = document.createElement('li');
     nomElement.innerText = noms[i];
-    abordablesElements.appendChild(nomElement)
-};
+    abordablesElements.appendChild(nomElement);
+}
 //Ajout de l'en-tête puis de la liste au bloc résultats filtres
-document.querySelector('.abordables')
-    .appendChild(abordablesElements)
+document.querySelector('.abordables').appendChild(abordablesElements);
 
 //Code Exercice:
-const nomDisponibles = pieces.map(piece => piece.nom);
+const nomsDisponibles = pieces.map(piece => piece.nom);
 const prixDisponibles = pieces.map(piece => piece.prix);
 
 for(let i = pieces.lenght -1; i >= 0; i--){
     if(pieces[i].disponibilite === false){
-        nomDisponibles.splice(i,1);
+        nomsDisponibles.splice(i,1);
         prixDisponibles.splice(i,1);
     }
 }
+
+const disponiblesElement = document.createElement('ul');
+
+for(let i=0; i < nomsDisponibles.lenght; i++){
+    const nomElement = document.createElement('li');
+    nomElement.innerText = `${nomsDisponibles[i]} - ${prixDisponibles[i]} €`;
+    disponiblesElement.appendChild(nomElement);
+}
+
+document.querySelector('.disponibles').appendChild(disponiblesElement);
